@@ -11,6 +11,8 @@
 	<groupId>com.cloud</groupId>
 	<artifactId>SpringCloud-EurekaServer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<!-- 可把Spring Boot打包成JAR的形式-->
+	<packaging>jar</packaging>
 	<name>SpringCloud-EurekaServer</name>
 	<description>Demo project for Spring Cloud EurekaServer</description>
 

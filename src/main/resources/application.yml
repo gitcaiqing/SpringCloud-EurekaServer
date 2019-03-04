@@ -1,15 +1,70 @@
-#端口号
-server:
-  port: 1111
-
+spring:
+  application:
+    #应用名称
+    name: SpringCloud-EurekaServer
 eureka:
   instance:
-    ip-address: 192.168.100.104
+    #声明以IP地址进行注册到服务中心
+    prefer-ip-address: false
   client:
-    #由于该应用为注册中心，所以设置为false,代表不向注册中心注册自己
-    register-with-eureka: false
-    #由于注册中心的职责就是维护服务实例，它并不需要去检索服务
-    fetch-registry: false
-    service-url:
+    #声明是否将自己的信息注册到Eureka服务器
+    registerWithEureka: true
+    #声明是否到Eureka服务器抓取注册信息
+    fetch-registry: true
+---
+spring:
+  profiles: peer1
+server:
+  #应用端口号
+  port: 1111
+eureka:
+  instance:
+    hostname: peer1
+  client:
+    serviceUrl:
       #注册中心
-      defaultZone: http://${eureka.instance.ip-address}:${server.port}/eureka
+      defaultZone: http://peer2:1112/eureka/
+---
+spring:
+  profiles: peer2
+server:
+  #应用端口号
+  port: 1112
+eureka:
+  instance: 
+    hostname: peer2
+  client:
+    serviceUrl:
+      #注册中心
+      defaultZone: http://peer1:1111/eureka/
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
